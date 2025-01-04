@@ -1,9 +1,13 @@
-<ng-container *ngIf="!route.url.includes ('login')">
-    <app-left-sidebar></app-left-sidebar>
-</ng-container>
-<ng-container>
-    <router-outlet></router-outlet>
-</ng-container>
-<ng-container *ngIf="!route.url.includes ('login')">
-    <app-right-sidebar></app-right-sidebar>
-</ng-container>
+<div class="d-flex">
+    <ng-container *ngIf="!route.url.includes ('login')">
+        <app-left-sidebar></app-left-sidebar>
+    </ng-container>
+    <ng-container>
+        <main class="main w-100">
+            <router-outlet></router-outlet>
+        </main>
+    </ng-container>
+    <ng-container *ngIf="!route.url.includes ('login')">
+        <app-right-sidebar></app-right-sidebar>
+    </ng-container>
+</div>
