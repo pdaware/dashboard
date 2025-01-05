@@ -1,1 +1,119 @@
-<p>dashboard-home works!</p>
+<section class="common-section top-section pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="title-main d-flex justify-content-between align-items-center mb-5">
+                    <h4 class="h4 title">Dashboard</h4>
+                    <div class="search">
+                        <span class="date"></span>
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="card-main">
+                    <div class="txt">
+                        <h4 class="h4 card-title mb-4">
+                            Welcome back {{userDetails.name}}!
+                        </h4>
+                        <p class="p-16 mb-0">
+                            You've learned <b>80%</b> of your goal this week !
+                            Keep it up and improve your results!
+                        </p>
+                    </div>
+                    <div class="img-wrap">
+                        <img src="assets/image/welcome.png" alt="" class="img-abs">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="learning-section common-section pb-0">
+    <div class="container">
+        <div class="row align-items-stretch">
+            <div class="col-12 col-lg-5 mb-3 mb-lg-0 h-100">
+                <div class="card px-3 py-2 h-100">
+                    <div class="d-flex justify-content-between aling-items-center">
+                        <div class="card-title mb-0 latest">latest results</div>
+                        <a href="http://">more --></a>
+                    </div>
+                    <div class="result-main py-3 d-flex justify-content-between align-items-center"
+                        [ngClass]="{'last':last}" *ngFor="let result of latestResults; let i = index; let last = last">
+                        <div class="name"> {{result.category}}
+                            <span class="gray">{{result.courseName}}</span>
+                        </div>
+                        <div class="progress-wrap  d-flex justify-content-between align-items-center"
+                            [ngClass]="i%2 === 0 ? 'blue' : 'red'">
+                            <div class="progress">
+                                <div class="progress-bar" [ngStyle]="{'width':result.percentage +'%'}"
+                                    role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span>
+                                {{result.percentage}}%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-7 h-100">
+                <div class="card px-3 py-2">
+                    <div class=" mb-2 d-flex justify-content-between aling-items-center">
+                        <div class="card-title latest">Time spent on learning</div>
+                        <select [(ngModel)]="graphSelectedVale" (ngModelChange)="onValueChange()">
+                            <option value="last_week" selected>Last week</option>
+                            <option value="last_month">Last month</option>
+                        </select>
+
+                    </div>
+                    <div class="graph-wrap" *ngIf="isLast_week">
+                        <canvas baseChart [data]="barChartDataWeekly" [options]="barChartOptions"
+                            [plugins]="barChartPlugins" [legend]="barChartLegend" [type]="'bar'">
+                        </canvas>
+                    </div>
+                    <div class="graph-wrap" *ngIf="!isLast_week">
+                        <canvas baseChart [data]="barChartDataMonthly" [options]="barChartOptions"
+                            [plugins]="barChartPlugins" [legend]="barChartLegend" [type]="'bar'">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="common-section courses-section">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="d-flex justify-content-between aling-items-center">
+                    <h6 class="h6 card-title mb-0">Your courses</h6>
+                    <a href="http://"> more</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mx-auto mb-3" *ngFor="let x of yourCourse; let i = index">
+                <div class="" [attr.class]=" 'card card-main p2 ' + 'card_'+i">
+                    <div class="d-flex justify-content-start align-items-center w-100">
+                        <div class="logo">
+                            <div class="course-code">{{x.code}}</div>
+                        </div>
+                        <div class="course-dtl w-100">
+                            <div class="s-title text-nowrap">{{x.name}}</div>
+                            <div class="type-main d-flex justify-content-between align-items-center w-100">
+                                <div class="name text-nowrap">{{x.type}}</div>
+                                <div class="arrow">--></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

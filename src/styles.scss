@@ -1,6 +1,12 @@
 :root {
     --bgcolor: aqua;
-    --font: "Roboto"
+    --font: "Roboto";
+    --grayColor: #b0b0cc;
+    --blackColor: #000000;
+    --colorWhite: #ffffff;
+    --blueColor: #5e81f4;
+    --dark-blueColor: #4d4cac;
+
 }
 
 * {
@@ -13,6 +19,16 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
+    color: var(--blackColor);
+    background: var(--colorWhite);
+}
+
+.gray {
+    color: var(--grayColor);
+}
+
+.white {
+    color: var(--colorWhite);
 }
 
 .common-section {

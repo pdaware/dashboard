@@ -1,13 +1,16 @@
-<div class="d-flex">
-    <ng-container *ngIf="!route.url.includes ('login')">
+<div class="d-flex" *ngIf="!cs.loader">
+    <ng-container *ngIf="!route.url.includes ('login') && !isMobile">
         <app-left-sidebar></app-left-sidebar>
     </ng-container>
     <ng-container>
-        <main class="main w-100">
+        <main class="main w-100 px-3">
             <router-outlet></router-outlet>
         </main>
     </ng-container>
-    <ng-container *ngIf="!route.url.includes ('login')">
+    <ng-container *ngIf="!route.url.includes ('login') && !isMobile">
         <app-right-sidebar></app-right-sidebar>
     </ng-container>
+</div>
+<div class="loader" *ngIf="cs.loader">
+    <app-custom-loader></app-custom-loader>
 </div>

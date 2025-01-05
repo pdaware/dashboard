@@ -40,7 +40,8 @@ export class LoginComponent {
         this.cs.isUserLogIn = true;
         this.toster.success('Login Sucessfully', '', { timeOut: 3000, progressBar:true, positionClass: 'toast-bottom-center', enableHtml: true });
         setTimeout(() => {
-          this.router.navigateByUrl('/dashboard/home')
+          this.cs.getData();
+          this.router.navigateByUrl('/dashboard/home');
         }, 3000);
 
       } else {

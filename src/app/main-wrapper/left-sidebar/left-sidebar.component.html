@@ -9,7 +9,7 @@
         <div class="all-links-main">
             <ul>
                 <li class="links" *ngFor="let link of linksData;let i = index">
-                    <a [routerLink]="link.route" [routerLinkActive]="'active'">
+                    <a [routerLink]="link.route" [routerLinkActive]="'active'" class="gray">
                         <div class="d-flex align-items-center" [ngClass]="{'mb-3':i !== 5}">
                             <div class="logo me-4">
                                 <ng-container *ngIf="i === 0">
